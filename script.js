@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search");
 
   let editTarget = null;
+  let profiles = JSON.parse(localStorage.getItem("profiles") || "[]");
 
   function validateForm() {
     let valid = true;
@@ -42,6 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return valid;
   }
 
+  function saveProfiles() {
+    localStorage.setItem("profiles", JSON.stringify(profiles));
+  }
+
   function addEntry(data) {
     const card = document.createElement("div");
     card.className = "card-person";
@@ -70,8 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     tableBody.prepend(tr);
 
-    card.querySelector(".remove").addEventListener("click", () => { card.remove(); tr.remove(); });
-    tr.querySelector(".remove").addEventListener("click", () => { card.remove(); tr.remove(); });
+    card.querySelector(".remove").addEventListener("click", () => {
+      const index = profiles.findIndex(p => p.id === data.id);
+      if (index > -1) profiles.splice(index, 1);
+      saveProfiles();
+      card.remove(); tr.remove();
+    });
+
+    tr.querySelector(".remove").addEventListener("click", () => {
+      const index = profiles.findIndex(p => p.id === data.id);
+      if (index > -1) profiles.splice(index, 1);
+      saveProfiles();
+      card.remove(); tr.remove();
+    });
 
     card.querySelector(".edit").addEventListener("click", () => editProfile(card, tr, data));
     tr.querySelector(".edit").addEventListener("click", () => editProfile(card, tr, data));
@@ -86,9 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("interests").value = data.interests;
     document.getElementById("photo").value = data.photo;
 
-    editTarget = { card, tr };
+    editTarget = { card, tr, dataId: data.id };
     card.remove();
     tr.remove();
+
+    profiles = profiles.filter(p => p.id !== data.id);
+    saveProfiles();
   }
 
   form.addEventListener("submit", (e) => {
@@ -96,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!validateForm()) return;
 
     const data = {
+      id: editTarget?.dataId || Date.now(),
       first: document.getElementById("first").value.trim(),
       last: document.getElementById("last").value.trim(),
       email: document.getElementById("email").value.trim(),
@@ -105,6 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
       photo: document.getElementById("photo").value.trim()
     };
 
+    profiles.push(data);
+    saveProfiles();
     addEntry(data);
     editTarget = null;
     form.reset();
@@ -123,4 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.style.display = tr.textContent.toLowerCase().includes(term) ? "" : "none";
     });
   });
+
+  profiles.forEach(profile => addEntry(profile));
 });
