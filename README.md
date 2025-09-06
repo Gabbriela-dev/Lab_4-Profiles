@@ -1,7 +1,8 @@
-# Lab 4 – Registration → Profile Cards
+# Lab 4 – Registration
 
 ## Author
 Gabbriela Kapitango
+224086316
 
 ## Description
 This project is a **student registration system** where you can add student profiles and see them as cards and in a table.  
@@ -10,8 +11,7 @@ This project is a **student registration system** where you can add student prof
 - Each student gets a **profile card** and a row in a **summary table**.  
 - You can **edit** or **remove** profiles.  
 - You can **search** to quickly find students.  
-- Profiles are saved in your browser, so they stay even after refreshing the page.  
-- The page is responsive and has a soft, professional girly theme inspired by Hello Kitty and Kuromi.
+- Profiles are saved in your browser, so they stay even after refreshing the page.
 
 ## Features
 - Form validation for required fields and email format.  
@@ -37,7 +37,7 @@ This project is a **student registration system** where you can add student prof
 6. Refresh the page to see profiles saved in the browser.
 
 ## GitHub
-[Repository URL](https://github.com/<your-username>/<your-repo>)
+[Repository URL](https://github.com/Gabbriela-dev/Lab_4-Profiles/tree/main)
 
 ## Commit Suggestions
 - `Initial form and layout`  
