@@ -11,22 +11,22 @@
 <body>
     <h1>Student registration</h1>
     <form id="regForm" novalidate>
-        <!--First and last names-->
         <label for="first">First Name <span aria-hidden="true">*</span></label>
         <input type="text" id="first" name="first" required>
         <small class="error" id="err-first"></small>
+
         <label for="last">Last Name <span aria-hidden="true">*</span></label>
         <input type="text" id="last" name="last" required>
         <small class="error" id="err-last"></small>
-        <!--Email-->
+
         <label for="email">Email <span aria-hidden="true">*</span></label>
         <input type="email" id="email" name="email" required />
         <small class="error" id="err-email"></small>
-        <!--Programme-->
+
         <label for="programme">Programme <span aria-hidden="true">*</span></label>
         <input type="text" id="programme" name="programme" required>
         <small class="error" id="err-programme"></small>
-        <!--Year of study-->
+
         <fieldset>
             <legend>Year of Study <span aria-hidden="true">*</span></legend>
             <label><input type="radio" name="year" value="1" required /> 1</label>
@@ -35,21 +35,23 @@
         </fieldset>
         <small id="err-year" class="error"></small>
         <div aria-live="polite" class="sr" id="live"></div>
-        <!--interests-->
+
         <label for="interests">Interests</label>
         <input type="text" id="interests" name="interests" placeholder="e.g. coding, art, sports">
 
-        <!--photo url-->
+
         <label for="photo">Photo URL</label>
         <input type="url" id="photo" name="photo" placeholder="http://...">
 
         <button type="submit">Add Student</button>
     </form>
-    <!-- Profile Cards Section -->
+
+    <label for="search">Search Profiles:</label>
+    <input type="text" id="search" placeholder="Search by name, programme, or year">
     <h2>Profile Cards</h2>
     <div id="cards"></div>
 
-    <!-- Summary Table -->
+
     <h2>Summary Table</h2>
     <table id="summary" border="1">
         <thead>
