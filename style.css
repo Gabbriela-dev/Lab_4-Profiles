@@ -195,3 +195,20 @@ td button.remove:hover {
     width: 95%;
   }
 }
+
+button.edit {
+  background-color: #d8a9c3;
+  color: #fff;
+  border: 2px none #bca0cc;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 6px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.edit:hover {
+  background-color: #b98fb8;
+  transform: translateY(-2px);
+}
